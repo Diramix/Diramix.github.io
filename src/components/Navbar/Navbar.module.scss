@@ -26,7 +26,7 @@
 	align-items: center;
 	color: $text-color;
 	min-height: 50px;
-	padding: 0 10px;
+	padding: 0 20px;
 	font-size: 18px;
 	border-bottom: 1px solid $border-color;
 	flex-shrink: 0;
@@ -91,6 +91,10 @@
 }
 
 @media (max-width: 768px) {
+	.header {
+		padding: 0 10px;
+	}
+
 	.root {
 		width: 100%;
 		height: auto;
@@ -104,6 +108,7 @@
 
 	.links {
 		display: none;
+		border-bottom: 1px solid $border-color;
 
 		&[data-open="true"] {
 			display: flex;
