@@ -1,0 +1,111 @@
+@use "../../styles/_var" as *;
+
+.root {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: $bg-color;
+	width: 250px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-right: 1px solid $border-color;
+}
+
+.links {
+	display: flex;
+	padding: 0 10px 10px 10px;
+	flex-direction: column;
+	margin-top: 10px;
+}
+
+.header {
+	position: sticky;
+	top: 0;
+	background-color: $bg-color;
+	display: flex;
+	align-items: center;
+	color: $text-color;
+	min-height: 50px;
+	padding: 0 10px;
+	font-size: 18px;
+	border-bottom: 1px solid $border-color;
+	flex-shrink: 0;
+	z-index: 10;
+	box-sizing: border-box;
+	justify-content: space-between;
+}
+
+.burger {
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 4px;
+
+	span {
+		display: block;
+		width: 22px;
+		height: 2px;
+		background-color: $text-color;
+		border-radius: 2px;
+		transition:
+			transform 0.3s,
+			opacity 0.3s;
+	}
+
+	&[data-active="true"] {
+		span:nth-child(1) {
+			transform: translateY(7px) rotate(45deg);
+		}
+		span:nth-child(2) {
+			opacity: 0;
+		}
+		span:nth-child(3) {
+			transform: translateY(-7px) rotate(-45deg);
+		}
+	}
+}
+
+.link {
+	display: flex;
+	opacity: 0.5;
+	text-decoration: none;
+	padding: 5px 5px 5px 10px;
+	border-radius: 8px;
+	font-size: 16px;
+	color: $text-color;
+
+	&:hover {
+		background-color: #1e1e20;
+	}
+
+	&.active {
+		background-color: #242426;
+		opacity: 1;
+		pointer-events: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.root {
+		width: 100%;
+		height: auto;
+		overflow: visible;
+		border-right: none;
+	}
+
+	.burger {
+		display: flex;
+	}
+
+	.links {
+		display: none;
+
+		&[data-open="true"] {
+			display: flex;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+---
+import showdown from "showdown"
+
+interface Props {
+	content: string;
+}
+
+const { content } = Astro.props;
+
+const lines = content.split("\n")
+const indent = Math.min(
+	...lines.filter((l) => l.trim()).map((l) => l.match(/^\s*/)?.[0].length ?? 0)
+)
+const dedented = lines.map((l) => l.slice(indent)).join("\n")
+
+const converter = new showdown.Converter()
+const html = converter.makeHtml(dedented)
+---
+
+<div set:html={html} />

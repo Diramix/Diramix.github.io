@@ -1,0 +1,51 @@
+---
+import styles from "./Navbar.module.scss"
+import links from "@config/links.json";
+
+const currentPath = Astro.url.pathname;
+---
+
+<div class={styles.root}>
+	<header class={styles.header}>
+		<span>Разделы</span>
+		<button class={styles.burger} id="burger-btn" aria-label="Toggle menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+	</header>
+	<nav class={styles.links} id="nav-links">
+		{
+			links.map((link) => (
+				<a
+					href={link.href}
+					class={`${styles.link}${currentPath === link.href ? ` ${styles.active}` : ""}`}
+					set:html={link.label}
+				/>
+			))
+		}
+	</nav>
+</div>
+
+<script>
+	function initNavbar() {
+		const btn = document.getElementById('burger-btn');
+		const nav = document.getElementById('nav-links');
+
+		// Reset menu state
+		nav?.setAttribute('data-open', 'false');
+		btn?.setAttribute('data-active', 'false');
+
+		btn?.addEventListener('click', () => {
+			const isOpen = nav?.getAttribute('data-open') === 'true';
+			nav?.setAttribute('data-open', String(!isOpen));
+			btn?.setAttribute('data-active', String(!isOpen));
+		});
+	}
+
+	// Initialize on page load
+	initNavbar();
+
+	// Reset menu when navigating between pages (Astro view transitions)
+	document.addEventListener('astro:after-swap', initNavbar);
+</script>

@@ -1,0 +1,22 @@
+@use "./var" as *;
+
+@font-face {
+	font-family: "gg sans";
+	src: url("/assets/fonts/ggsans.woff2") format("woff2");
+}
+
+html,
+body {
+	background-color: $bg-color;
+	height: 100dvh;
+	margin: 0;
+	padding: 0;
+	font-family: "gg sans";
+	font-weight: 600;
+	user-select: none;
+	overflow: hidden;
+}
+
+a {
+	color: #1caed8;
+}

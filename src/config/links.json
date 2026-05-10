@@ -1,0 +1,10 @@
+[
+	{
+		"label": "Главная",
+		"href": "/home"
+	},
+	{
+		"label": "Мнение экспертов",
+		"href": "/mnenie-ekspertov"
+	}
+]

@@ -1,0 +1,28 @@
+---
+import styles from "./index.module.scss"
+import BaseLayout from "@src/layouts/DefaultLayout.astro"
+import Markdown from "@components/Markdown/Markdown.astro"
+import Card from "@components/Card/Card.astro"
+
+const description = "Зачем банить Диру?"
+
+const mdFiles = import.meta.glob("./md/*.md", { as: "raw", eager: true })
+const cards = Object.values(mdFiles)
+---
+
+<BaseLayout title="Главная" description={description}>
+	<div class={styles.banner}>
+		<img
+			class={styles.banner__image}
+			src="https://github.com/Diramix/Diramix/blob/main/assets/banner.png?raw=true"
+		/>
+		<div class={styles["banner__overlay"]}>
+			{description}
+		</div>
+	</div>
+	{cards.map((content) => (
+		<Card>
+			<Markdown content={content} />
+		</Card>
+	))}
+</BaseLayout>

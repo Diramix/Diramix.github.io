@@ -1,0 +1,35 @@
+---
+import styles from "./DefaultLayout.module.scss"
+import "@styles/global.scss"
+import Navbar from "@components/Navbar/Navbar.astro"
+import Header from "@components/Header/Header.astro"
+import { ClientRouter } from "astro:transitions"
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.webp" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{description}</title>
+		<ClientRouter />
+	</head>
+	<body transition:animate="none">
+		<div class={styles.root}>
+			<Navbar />
+			<div class={styles.content}>
+				<Header title={title} description={description} />
+				<div class={styles.feed}>
+					<slot />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

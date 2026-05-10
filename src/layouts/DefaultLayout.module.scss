@@ -1,0 +1,52 @@
+@use "../styles/_var" as *;
+
+.root {
+	display: flex;
+	flex-direction: row;
+	height: 100dvh;
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+	background-color: $bg2-color;
+	border-left: 1px solid $border-color;
+	border-right: 1px solid $border-color;
+	overflow-x: hidden;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	overflow: hidden;
+}
+
+.feed {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 10px 300px 10px;
+	gap: 10px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	flex: 1;
+}
+
+@media (max-width: 768px) {
+	.root {
+		flex-direction: column;
+		height: 100dvh;
+	}
+
+	.content {
+		flex: 1;
+		min-height: 0;
+		width: 100%;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.feed {
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+}
