@@ -1,0 +1,7 @@
+@use "../styles/var" as *;
+
+.notFoundText {
+	color: $text-color;
+	margin: auto;
+	text-align: center;
+}

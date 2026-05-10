@@ -1,0 +1,18 @@
+---
+import styles from "./404.module.scss"
+
+import BaseLayout from "@src/layouts/DefaultLayout.astro"
+import Markdown from "@components/Markdown/Markdown.astro"
+---
+
+<BaseLayout title="404" description="Not found">
+	<div class={styles.notFoundText}>
+		<Markdown
+			content="
+				*Причину бана пока не придумали*
+
+				Предложите идею в [Discord](https://discord.gg/ky6bcdy7KA)
+				или поддержите команду на [Boosty](https://boosty.to/diramix)
+			"/>
+	</div>
+</BaseLayout>

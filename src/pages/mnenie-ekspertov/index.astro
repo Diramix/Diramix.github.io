@@ -7,7 +7,7 @@ const mdFiles = import.meta.glob("./md/*.md", { query: "?raw", import: "default"
 const cards = Object.values(mdFiles)
 ---
 
-<BaseLayout title="Мнение экспертов" description="Что говорят опрошенные экперты.">
+<BaseLayout title="Мнение экспертов" description="Что говорят опрошенные экперты">
 	{cards.map((content) => (
 		<Card>
 			<Markdown content={content} />
