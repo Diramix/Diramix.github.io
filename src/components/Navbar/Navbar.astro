@@ -20,6 +20,8 @@ const currentPath = Astro.url.pathname;
 				<a
 					href={link.href}
 					class={`${styles.link}${currentPath === link.href ? ` ${styles.active}` : ""}`}
+					data-nav-link={link.href}
+					data-active={currentPath === link.href}
 					set:html={link.label}
 				/>
 			))
@@ -41,11 +43,31 @@ const currentPath = Astro.url.pathname;
 			nav?.setAttribute('data-open', String(!isOpen));
 			btn?.setAttribute('data-active', String(!isOpen));
 		});
+
+		updateActiveLink();
 	}
 
-	// Initialize on page load
-	initNavbar();
+	function updateActiveLink() {
+		const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+		const nav = document.getElementById('nav-links');
+		if (!nav) return;
 
-	// Reset menu when navigating between pages (Astro view transitions)
-	document.addEventListener('astro:after-swap', initNavbar);
+		const links = nav.querySelectorAll('a');
+		links.forEach((link) => {
+			const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+			if (currentPath === href) {
+				link.setAttribute('data-active', 'true');
+			} else {
+				link.setAttribute('data-active', 'false');
+			}
+		});
+	}
+
+	initNavbar();
+	updateActiveLink();
+
+	document.addEventListener('astro:after-swap', () => {
+		initNavbar();
+		updateActiveLink();
+	});
 </script>
