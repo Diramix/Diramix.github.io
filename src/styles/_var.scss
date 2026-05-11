@@ -1,10 +1,54 @@
-$text-color: #fff;
+@use "sass:map";
 
-$bg-color: #010101;
-$bg2-color: #070709;
-
-$border-color: color-mix(
-	in oklab,
-	hsl(240 calc(1 * 4%) 60.784%/0.2) 100%,
-	hsl(0 0% 0%/0.2) 0%
+// Light theme
+$colors-light: (
+	text: #28282d,
+	bg: #f0f0f1,
+	bg2: #fbfbfb,
+	card-bg: #fbfbfb,
+	navbar-hover: #e8e8ea,
+	navbar-active: #dddde0,
+	link: #0066cc,
+	border-light: color-mix(
+			color-mix(
+				in oklab,
+				hsl(240 calc(1 * 4%) 60.784%/0.2784313725490196) 100%,
+				hsl(0 0% 0%/0.2784313725490196) 0%
+			)
+		),
 );
+
+// Dark theme
+$colors-dark: (
+	text: #fff,
+	bg: #010101,
+	bg2: #070709,
+	card-bg: #0c0c0e,
+	navbar-hover: #1e1e20,
+	navbar-active: #242426,
+	link: #1caed8,
+	border-light: color-mix(
+			in oklab,
+			hsl(240 calc(1 * 4%) 60.784%/0.2) 100%,
+			hsl(0 0% 0%/0.2) 0%
+		),
+);
+
+@mixin theme-colors($property, $light-color, $dark-color) {
+	#{$property}: $dark-color;
+
+	@media (prefers-color-scheme: light) {
+		#{$property}: $light-color;
+	}
+}
+
+@mixin theme-color($property, $name) {
+	$light: map.get($colors-light, $name);
+	$dark: map.get($colors-dark, $name);
+	@include theme-colors($property, $light, $dark);
+}
+
+$text-color: map.get($colors-dark, text);
+$bg-color: map.get($colors-dark, bg);
+$bg2-color: map.get($colors-dark, bg2);
+$border-color: map.get($colors-dark, border-light);

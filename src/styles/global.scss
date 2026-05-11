@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "./var" as *;
 
 @font-face {
@@ -15,8 +16,16 @@ body {
 	font-weight: 600;
 	user-select: none;
 	overflow: hidden;
+
+	@media (prefers-color-scheme: light) {
+		background-color: map.get($colors-light, bg);
+	}
 }
 
 a {
-	color: #1caed8;
+	color: map.get($colors-dark, link);
+
+	@media (prefers-color-scheme: light) {
+		color: map.get($colors-light, link);
+	}
 }

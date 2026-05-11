@@ -1,14 +1,19 @@
+@use "sass:map";
 @use "../../styles/_var" as *;
 
 .root {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background-color: $bg-color;
+	@include theme-color(background-color, bg);
 	width: 250px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	border-right: 1px solid $border-color;
+	border-right: 1px solid map.get($colors-dark, border-light);
+
+	@media (prefers-color-scheme: light) {
+		border-right-color: map.get($colors-light, border-light);
+	}
 }
 
 .links {
@@ -21,18 +26,22 @@
 .header {
 	position: sticky;
 	top: 0;
-	background-color: $bg-color;
+	@include theme-color(background-color, bg);
 	display: flex;
 	align-items: center;
-	color: $text-color;
+	@include theme-color(color, text);
 	min-height: 50px;
 	padding: 0 20px;
 	font-size: 18px;
-	border-bottom: 1px solid $border-color;
+	border-bottom: 1px solid map.get($colors-dark, border-light);
 	flex-shrink: 0;
 	z-index: 10;
 	box-sizing: border-box;
 	justify-content: space-between;
+
+	@media (prefers-color-scheme: light) {
+		border-bottom-color: map.get($colors-light, border-light);
+	}
 }
 
 .burger {
@@ -49,7 +58,7 @@
 		display: block;
 		width: 22px;
 		height: 2px;
-		background-color: $text-color;
+		@include theme-color(background-color, text);
 		border-radius: 2px;
 		transition:
 			transform 0.3s,
@@ -76,15 +85,15 @@
 	padding: 5px 5px 5px 10px;
 	border-radius: 8px;
 	font-size: 16px;
-	color: $text-color;
+	@include theme-color(color, text);
 
 	&:hover {
-		background-color: #1e1e20;
+		@include theme-color(background-color, navbar-hover);
 	}
 
 	&.active,
 	&[data-active="true"] {
-		background-color: #242426;
+		@include theme-color(background-color, navbar-active);
 		opacity: 1;
 		pointer-events: none;
 	}

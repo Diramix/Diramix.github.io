@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../styles/_var" as *;
 
 .root {
@@ -7,10 +8,15 @@
 	width: 100%;
 	max-width: 1200px;
 	margin: auto;
-	background-color: $bg2-color;
-	border-left: 1px solid $border-color;
-	border-right: 1px solid $border-color;
+	@include theme-color(background-color, bg2);
+	border-left: 1px solid map.get($colors-dark, border-light);
+	border-right: 1px solid map.get($colors-dark, border-light);
 	overflow-x: hidden;
+
+	@media (prefers-color-scheme: light) {
+		border-left-color: map.get($colors-light, border-light);
+		border-right-color: map.get($colors-light, border-light);
+	}
 }
 
 .content {
