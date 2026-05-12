@@ -80,12 +80,11 @@
 
 .link {
 	display: flex;
-	opacity: 0.5;
 	text-decoration: none;
 	padding: 5px 5px 5px 10px;
 	border-radius: 8px;
 	font-size: 16px;
-	@include theme-color(color, text);
+	@include theme-color(color, mut);
 
 	&:hover {
 		@include theme-color(background-color, navbar-hover);
@@ -94,7 +93,7 @@
 	&.active,
 	&[data-active="true"] {
 		@include theme-color(background-color, navbar-active);
-		opacity: 1;
+		@include theme-color(color, text);
 		pointer-events: none;
 	}
 }

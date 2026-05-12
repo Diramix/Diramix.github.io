@@ -2,36 +2,28 @@
 
 // Light theme
 $colors-light: (
-	text: #28282d,
-	bg: #f0f0f1,
-	bg2: #fbfbfb,
-	card-bg: #fbfbfb,
-	navbar-hover: #e8e8ea,
-	navbar-active: #dddde0,
-	link: #0066cc,
-	border-light: color-mix(
-			color-mix(
-				in oklab,
-				hsl(240 calc(1 * 4%) 60.784%/0.2784313725490196) 100%,
-				hsl(0 0% 0%/0.2784313725490196) 0%
-			)
-		),
+	text: #0f1419,
+	mut: rgb(83, 100, 113),
+	bg: #ffffff,
+	bg2: #ffffff,
+	card-bg: #ffffff,
+	navbar-hover: #e7e7e8,
+	navbar-active: #0000,
+	link: #1d9bf0,
+	border-light: #eff3f4,
 );
 
 // Dark theme
 $colors-dark: (
 	text: #fff,
-	bg: #010101,
-	bg2: #070709,
-	card-bg: #0c0c0e,
-	navbar-hover: #1e1e20,
-	navbar-active: #242426,
-	link: #1caed8,
-	border-light: color-mix(
-			in oklab,
-			hsl(240 calc(1 * 4%) 60.784%/0.2) 100%,
-			hsl(0 0% 0%/0.2) 0%
-		),
+	mut: rgb(113, 118, 123),
+	bg: #000000,
+	bg2: #010101,
+	card-bg: #000000,
+	navbar-hover: #181818,
+	navbar-active: #0000,
+	link: #1d9bf0,
+	border-light: #2f3336,
 );
 
 @mixin theme-colors($property, $light-color, $dark-color) {
