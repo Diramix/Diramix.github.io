@@ -1,0 +1,16 @@
+---
+import BaseLayout from "@src/layouts/DefaultLayout.astro"
+import Markdown from "@components/Markdown/Markdown.astro"
+import Card from "@components/Card/Card.astro"
+
+const mdFiles = import.meta.glob("./md/*.md", { query: "?raw", import: "default", eager: true })
+const cards = Object.values(mdFiles)
+---
+
+<BaseLayout title="Заказ" description="Дайте деняг на пропитание ☹️">
+	{cards.map((content) => (
+		<Card>
+			<Markdown content={content} />
+		</Card>
+	))}
+</BaseLayout>

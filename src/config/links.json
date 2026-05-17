@@ -6,5 +6,9 @@
 	{
 		"label": "Мнение экспертов",
 		"href": "/mnenie-ekspertov"
+	},
+	{
+		"label": "Заказ",
+		"href": "/order"
 	}
 ]

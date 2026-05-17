@@ -22,8 +22,17 @@ body {
 
 a {
 	color: map.get($colors-dark, link);
+	transition: color 0.2s ease;
 
 	@media (prefers-color-scheme: light) {
 		color: map.get($colors-light, link);
+	}
+
+	&:hover:not(#navbar-root a) {
+		color: lighten(map.get($colors-dark, link), 20%);
+
+		@media (prefers-color-scheme: light) {
+			color: darken(map.get($colors-light, link), 15%);
+		}
 	}
 }
