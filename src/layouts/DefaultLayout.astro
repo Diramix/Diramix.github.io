@@ -1,7 +1,7 @@
 ---
 import styles from "./DefaultLayout.module.scss"
 import "@styles/global.scss"
-import Navbar from "@components/Navbar/Navbar.astro"
+import NavBar from "@components/NavBar/NavBar.astro"
 import Header from "@components/Header/Header.astro"
 import { ClientRouter } from "astro:transitions"
 
@@ -23,7 +23,7 @@ const { title, description } = Astro.props;
 	</head>
 	<body transition:animate="none">
 		<div class={styles.root}>
-			<Navbar />
+			<NavBar />
 			<div class={styles.content}>
 				<Header title={title} description={description} />
 				<div class={styles.feed}>

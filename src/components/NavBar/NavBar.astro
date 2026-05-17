@@ -1,5 +1,5 @@
 ---
-import styles from "./Navbar.module.scss"
+import styles from "./NavBar.module.scss"
 import links from "@config/links.json";
 
 const currentPath = Astro.url.pathname;
@@ -32,7 +32,7 @@ const currentPath = Astro.url.pathname;
 <script>
 	let navbarObserver: ResizeObserver | null = null;
 
-	function initNavbar() {
+	function initNavBar() {
 		const btn = document.getElementById('burger-btn');
 		const nav = document.getElementById('nav-links');
 		const root = document.getElementById('navbar-root');
@@ -73,11 +73,11 @@ const currentPath = Astro.url.pathname;
 		});
 	}
 
-	initNavbar();
+	initNavBar();
 	updateActiveLink();
 
 	document.addEventListener('astro:after-swap', () => {
-		initNavbar();
+		initNavBar();
 		updateActiveLink();
 	});
 </script>

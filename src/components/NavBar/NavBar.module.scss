@@ -10,7 +10,7 @@
 	will-change: transform;
 	height: 100dvh;
 	@include theme-color(background-color, bg);
-	width: 250px;
+	width: 200px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	border-right: 1px solid map.get($colors-dark, border-light);
