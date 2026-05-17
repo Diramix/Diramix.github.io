@@ -5,7 +5,7 @@ import links from "@config/links.json";
 const currentPath = Astro.url.pathname;
 ---
 
-<div class={styles.root}>
+<div class={styles.root} id="navbar-root">
 	<header class={styles.header}>
 		<span>Разделы</span>
 		<button class={styles.burger} id="burger-btn" aria-label="Toggle menu">
@@ -30,11 +30,13 @@ const currentPath = Astro.url.pathname;
 </div>
 
 <script>
+	let navbarObserver: ResizeObserver | null = null;
+
 	function initNavbar() {
 		const btn = document.getElementById('burger-btn');
 		const nav = document.getElementById('nav-links');
+		const root = document.getElementById('navbar-root');
 
-		// Reset menu state
 		nav?.setAttribute('data-open', 'false');
 		btn?.setAttribute('data-active', 'false');
 
@@ -43,6 +45,14 @@ const currentPath = Astro.url.pathname;
 			nav?.setAttribute('data-open', String(!isOpen));
 			btn?.setAttribute('data-active', String(!isOpen));
 		});
+
+		navbarObserver?.disconnect();
+		if (root) {
+			navbarObserver = new ResizeObserver(() => {
+				document.documentElement.style.setProperty('--navbar-height', root.offsetHeight + 'px');
+			});
+			navbarObserver.observe(root);
+		}
 
 		updateActiveLink();
 	}
